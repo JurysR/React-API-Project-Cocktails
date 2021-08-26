@@ -1,7 +1,7 @@
 import React from 'react';
 import Loading from '../components/Loading';
 import { useParams, Link } from 'react-router-dom';
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 const url = 'https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=';
 
 const SingleCocktail = () => {
@@ -100,9 +100,17 @@ const SingleCocktail = () => {
           </p>
           <p>
             <span className='drink-data'>ingredients :</span>
-            {ingredients.map((item, index) => {
-              return item ? <span key={index}>{item}</span> : null;
-            })}
+
+            {ingredients
+              .filter((item, index) => {
+                return item ? <span key={index}>{item}</span> : null;
+              })
+              .join(', ')}
+            {/* {ingredients
+              .map((item, index) => {
+                return item ? <span key={index}>{item}</span> : null;
+              })
+              } */}
           </p>
         </div>
       </div>
